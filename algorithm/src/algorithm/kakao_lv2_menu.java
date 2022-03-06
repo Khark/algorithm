@@ -26,8 +26,8 @@ public class kakao_lv2_menu {
             for (int j = 0; j < course.length; j++) {
 
                 if(charArr.length>=course[j]) {
-                    //dfs(charArr, visited, 0, charArr.length, course[j], course[j]);
-                	combination(charArr, visited, 0  ,charArr.length, course[j]);
+                    dfs(charArr, visited, 0, charArr.length, course[j], course[j]);
+                	//combination(charArr, visited, 0  ,charArr.length, course[j]);
                 }
             }
         }
@@ -70,18 +70,7 @@ public class kakao_lv2_menu {
     	// 'AB', 'ABC', 'ABCD', 'ABD', 'AC', 'ACD', 'AD', 'BC', 'BCD', 'BD', 'CD'
     	return answer;
     }
-//    private static void combination(char[] charArr, boolean[] visited, int start, int n, int r) {
-//        if (r == 0) {
-//            push(charArr, visited, n);
-//            return;
-//        }
-//
-//        for (int i = start; i < n; i++) {
-//            visited[i] = true;
-//            combination(charArr, visited, i + 1, n, r - 1);
-//            visited[i] = false;
-//        }
-//    }
+
     
     
     public static void dfs(char [] obj, boolean [] visited, int start, int end, int course ,int course2) {

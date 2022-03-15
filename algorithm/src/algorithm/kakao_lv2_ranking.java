@@ -15,8 +15,11 @@ public class kakao_lv2_ranking {
 		
 	
 		
-		String[] info = { "java backend junior pizza 150", "python frontend senior chicken 210",
-				"python frontend senior chicken 150", "cpp backend senior pizza 260", "java backend junior chicken 80",
+		String[] info = { "java backend junior pizza 150", 
+				"python frontend senior chicken 210",
+				"python frontend senior chicken 150", 
+				"cpp backend senior pizza 260",
+				"java backend junior chicken 80",
 				"python backend senior chicken 50" };
 		
 		
@@ -48,9 +51,13 @@ public class kakao_lv2_ranking {
 			String []arr = value.replace(" and", "").split(" ");
 			return (int) Arrays.stream(info2).filter(t ->{
 				if(Integer.parseInt(t[4]) >= Integer.parseInt(arr[4])){
-
-					if(arr[0].equals(arr[1]) && arr[0].equals(arr[2]) && arr[0].equals(arr[2]) && arr[0].equals(arr[3]) ) {
-						
+					StringBuffer query2 = new StringBuffer();
+					query2.append(arr[0]);
+					query2.append(arr[1]);
+					query2.append(arr[2]);
+					query2.append(arr[3]);
+					
+				if( query2.indexOf("----") == 1 ) {
 						return true;
 
 					}else {
@@ -65,7 +72,6 @@ public class kakao_lv2_ranking {
 				}else {
 					return false;
 				}
-				
 			}).count();
 			
 		}).toArray();

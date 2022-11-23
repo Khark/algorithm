@@ -1,9 +1,18 @@
 package lamda;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.function.*;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
+import java.util.function.IntConsumer;
+import java.util.function.LongConsumer;
+import java.util.function.ObjDoubleConsumer;
+import java.util.function.ObjIntConsumer;
+import java.util.function.ObjLongConsumer;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -14,7 +23,7 @@ public class lamda_Basic {
 		int max(int a, int b);
 	}
 	
-	//	람다식
+	//	함수형 인터페이스 
 	// 매개변가 없고,리턴값이 없는 람다식 ->  x 
 	// 매개변수가 있고,리턴값이 없는 람다식 -> Consumer<T>
 	// 매개변수가 없고, 리턴값이 있는 람다식 -> Supplier<T>
@@ -44,6 +53,18 @@ public class lamda_Basic {
 
 
     
+    @FunctionalInterface
+    interface LamdaTest{
+    	int min(int x, int y);
+    }
+    
+    @FunctionalInterface
+    interface FunctionalTest<T, R>{
+
+    	R apply(T t);
+    
+    	
+    }
     
     class Student{
         private String name;
@@ -54,6 +75,27 @@ public class lamda_Basic {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		
+		// 매개변수 x 반환값
+		Supplier<List<lamda_to>> s4= ()->{
+			List<lamda_to> list = new ArrayList<lamda_to>();
+			list.add(new lamda_to("111",10));
+			list.add(new lamda_to("222",20));
+			list.add(new lamda_to("333",30));
+			
+			return list;
+		};
+		
+		
+		for(lamda_to to : s4.get()) {
+			System.out.println("##"+to.getName()+"##"+to.getAge());
+		}
+		
+		LamdaTest test = (x,y) -> x < y ? x:y;
+		System.err.println(test.min(3, 4));
+		
+		
 		Consumer<Integer> c3 = count -> {
 
 			for (int i = 0; i < count; i++) {
